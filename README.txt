@@ -22,7 +22,7 @@ EXAMPLE USAGE
 >>>   sleep(2)
 >>>   return n**0.5
 
->>> cache = LruCache(max_size=200)
+>>> cache = LruCache(max_size=200, plan_b_func=slowSqrt)
 #This lookup will be slow
 >>> answer, found_in_cache = cache.lookup(49)
 >>> print answer, found_in_cache
