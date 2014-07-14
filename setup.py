@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "lru_cache",
+    name = "lru_cacher",
     packages = find_packages(),
     version = "1.0.0",
     description = "Least Recently used Cache (LRU Cache) in Python",

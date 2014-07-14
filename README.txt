@@ -1,4 +1,4 @@
-lru_cache
+lru_cacher
 =========
 
 This is a  Least Recently Used (LRU) Cache implementation in Python.
@@ -15,6 +15,9 @@ python setup.py test
 EXAMPLE USAGE
 
 >>> from time import sleep
+>>>
+>>> from lru_cacher import LruCacher
+>>>
 >>> def slowSqrt(n):
 >>>   sleep(2)
 >>>   return n**0.5
