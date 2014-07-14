@@ -1,14 +1,12 @@
-"""
-c = LRUCache(5000, hard_work_func)
-
-c['andrew'] += 5
-"""
-
 from doubly_linked_list import DoublyLinkedList
 
-class LRUCache:
+class LruCache(object):
 	def __init__(self, max_size, plan_b_func):
-	
+		"max_size: the largest number of items the cache can have."
+		"plan_b_func: the function that will be called with the query as its"
+		"             argument if a query isn't cached. The result will then"
+		"             be associated with the query."
+		
 		if max_size < 0:
 			raise ValueError("max_size must be positive.")
 		if not callable(plan_b_func):
@@ -20,11 +18,17 @@ class LRUCache:
 		self.plan_b_func = plan_b_func
 		
 	def lookup(self, query):
-		"If the query is in the cache, move it to the front of the linked list"
-		"then return it. If it's not in the cache, remove the last query in the"
-		"linked list, queries the plan_b_func for the result, adds it to the"
-		"cache, and returns it. This should be a decorator."
-		"data is the count, query is the token"
+		"Perform a query on the cache. The elements of the cache are "
+		"automatically adjusted. If the query is in the cache, move it to the "
+		"front of the linked list then return it. If it's not in the cache, "
+		"remove the last query in the linked list, queries the plan_b_func for"
+		"the result, adds it to the cache, and returns it. This should be a "
+		"decorator."
+		
+		"Cached items have their queries as keys in the hashtable, which point"
+		"to elements in a doubly linked list. Linked lsit nodes have two "
+		"attributesdata: data, which is the result of calling plan_b_func, and"
+		"and query, which is the query itself."
 		
 		found_in_cache = None
 		if query not in self.ht:
